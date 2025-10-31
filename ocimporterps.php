@@ -57,21 +57,13 @@ class Ocimporterps extends Module
 
     public function getContent()
     {
-        if (Tools::getValue('controller') === 'AdminOcimporter') {
-            return '';
-        }
-
         $params = [
             'configure' => $this->name,
             'module_name' => $this->name,
             'module' => $this->name,
         ];
 
-        $query = http_build_query($params, '', '&', PHP_QUERY_RFC3986);
-        $token = Tools::getAdminTokenLite('AdminOcimporter');
-        Tools::redirectAdmin('index.php?controller=AdminOcimporter&'.$query.'&token='.$token);
-
-        return '';
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminOcimporter', true, [], $params));
     }
 
     protected function installSql()
