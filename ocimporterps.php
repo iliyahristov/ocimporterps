@@ -7,7 +7,7 @@ class Ocimporterps extends Module
     {
         $this->name = 'ocimporterps';
         $this->tab = 'migration_tools';
-        $this->version = '0.3.0';
+        $this->version = '0.3.1';
         $this->author = 'kaielectric.com';
         $this->need_instance = 0;
         $this->bootstrap = true;
