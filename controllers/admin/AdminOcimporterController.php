@@ -29,6 +29,7 @@ class AdminOcimporterController extends ModuleAdminController
                 'pass' => Configuration::get('OCIMP_DB_PASS'),
                 'pref' => Configuration::get('OCIMP_DB_PREFIX'),
                 'batch'=> (int)Configuration::get('OCIMP_BATCH'),
+                'oc_lang' => (int)Configuration::get('OCIMP_OC_LANG'),
                 'img_mode' => Configuration::get('OCIMP_IMG_MODE') ?: 'url',
                 'img_baseurl' => Configuration::get('OCIMP_IMG_BASEURL'),
                 'img_basepath' => Configuration::get('OCIMP_IMG_BASEPATH'),
@@ -46,6 +47,7 @@ class AdminOcimporterController extends ModuleAdminController
             Configuration::updateValue('OCIMP_DB_PASS', Tools::getValue('ocimp_pass'));
             Configuration::updateValue('OCIMP_DB_PREFIX', Tools::getValue('ocimp_pref'));
             Configuration::updateValue('OCIMP_BATCH', (int)Tools::getValue('ocimp_batch'));
+            Configuration::updateValue('OCIMP_OC_LANG', (int)Tools::getValue('ocimp_oc_lang'));
             Configuration::updateValue('OCIMP_IMG_MODE', Tools::getValue('ocimp_img_mode'));
             Configuration::updateValue('OCIMP_IMG_BASEURL', Tools::getValue('ocimp_img_baseurl'));
             Configuration::updateValue('OCIMP_IMG_BASEPATH', Tools::getValue('ocimp_img_basepath'));

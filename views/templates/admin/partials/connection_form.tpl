@@ -25,6 +25,11 @@
                 <label>Batch size</label>
                 <input class="form-control" name="ocimp_batch" value="{$config.batch|intval}">
             </div>
+            <div class="form-group">
+                <label>OpenCart language ID</label>
+                <input class="form-control" name="ocimp_oc_lang" value="{$config.oc_lang|intval}">
+                <p class="help-block">ID на езика в таблицата language (обикновено 1).</p>
+            </div>
         </div>
         <div class="col-lg-6">
             <div class="form-group">

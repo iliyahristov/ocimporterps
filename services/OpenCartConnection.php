@@ -45,9 +45,35 @@ class OpenCartConnection
         $p = $this->prefix;
         return "SELECT product_id, image FROM `{$p}product_image` WHERE image IS NOT NULL ORDER BY sort_order";
     }
+    public function productImagesFor(array $productIds)
+    {
+        if (!$productIds) { return []; }
+        $p = $this->prefix;
+        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+        $sql = "SELECT product_id, image FROM `{$p}product_image` WHERE image IS NOT NULL AND product_id IN ($placeholders) ORDER BY sort_order";
+        $stmt = $this->pdo->prepare($sql);
+        foreach (array_values($productIds) as $index => $id) {
+            $stmt->bindValue($index + 1, (int)$id, PDO::PARAM_INT);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function productCategories(){
         $p = $this->prefix;
         return "SELECT product_id, category_id FROM `{$p}product_to_category`";
+    }
+    public function productCategoriesFor(array $productIds)
+    {
+        if (!$productIds) { return []; }
+        $p = $this->prefix;
+        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+        $sql = "SELECT product_id, category_id FROM `{$p}product_to_category` WHERE product_id IN ($placeholders)";
+        $stmt = $this->pdo->prepare($sql);
+        foreach (array_values($productIds) as $index => $id) {
+            $stmt->bindValue($index + 1, (int)$id, PDO::PARAM_INT);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function categories($lang_id = 1){
         $p = $this->prefix;
@@ -64,8 +90,10 @@ class OpenCartConnection
     public function orders(){
         $p = $this->prefix;
         return "SELECT o.order_id, o.customer_id, o.firstname, o.lastname, o.email, o.telephone,
-                       o.payment_address_1, o.payment_city, o.payment_zone, o.payment_country,
-                       o.shipping_address_1, o.shipping_city, o.shipping_zone, o.shipping_country,
+                       o.payment_company, o.payment_address_1, o.payment_address_2, o.payment_city, o.payment_postcode, o.payment_zone, o.payment_country,
+                       o.payment_iso_code_2, o.payment_zone_id,
+                       o.shipping_company, o.shipping_address_1, o.shipping_address_2, o.shipping_city, o.shipping_postcode, o.shipping_zone, o.shipping_country,
+                       o.shipping_iso_code_2, o.shipping_zone_id,
                        o.total, o.currency_code, o.date_added, o.order_status_id
                 FROM `{$p}order` o ORDER BY o.order_id ASC";
     }
