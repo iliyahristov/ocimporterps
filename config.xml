@@ -2,7 +2,7 @@
 <module>
   <name>ocimporterps</name>
   <displayName>OpenCart 3 → PrestaShop Importer</displayName>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
   <author>kaielectric.com</author>
   <tab>migration_tools</tab>
   <confirmUninstall>Yes</confirmUninstall>
