@@ -57,7 +57,13 @@ class Ocimporterps extends Module
 
     public function getContent()
     {
-        Tools::redirectAdmin($this->context->link->getAdminLink('AdminOcimporter'));
+        $params = [
+            'configure' => $this->name,
+            'module_name' => $this->name,
+            'module' => $this->name,
+        ];
+
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminOcimporter', true, [], $params));
     }
 
     protected function installSql()
