@@ -55,6 +55,11 @@ class Ocimporterps extends Module
         return parent::uninstall();
     }
 
+    public function getContent()
+    {
+        Tools::redirectAdmin($this->context->link->getAdminLink('AdminOcimporter'));
+    }
+
     protected function installSql()
     {
         $sql = str_replace('PREFIX_', _DB_PREFIX_, file_get_contents(__DIR__.'/sql/install.sql'));
