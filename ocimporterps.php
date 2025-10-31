@@ -7,7 +7,7 @@ class Ocimporterps extends Module
     {
         $this->name = 'ocimporterps';
         $this->tab = 'migration_tools';
-        $this->version = '0.2.1';
+        $this->version = '0.3.0';
         $this->author = 'kaielectric.com';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -26,6 +26,7 @@ class Ocimporterps extends Module
         Configuration::updateValue('OCIMP_DB_PASS', '');
         Configuration::updateValue('OCIMP_DB_PREFIX', 'oc_');
         Configuration::updateValue('OCIMP_BATCH', 50);
+        Configuration::updateValue('OCIMP_OC_LANG', 1);
         Configuration::updateValue('OCIMP_IMG_MODE', 'url');
         Configuration::updateValue('OCIMP_IMG_BASEURL', '');
         Configuration::updateValue('OCIMP_IMG_BASEPATH', '');
@@ -37,6 +38,20 @@ class Ocimporterps extends Module
     {
         $this->uninstallTab('AdminOcimporter');
         $this->uninstallSql();
+        foreach ([
+            'OCIMP_DB_HOST',
+            'OCIMP_DB_NAME',
+            'OCIMP_DB_USER',
+            'OCIMP_DB_PASS',
+            'OCIMP_DB_PREFIX',
+            'OCIMP_BATCH',
+            'OCIMP_OC_LANG',
+            'OCIMP_IMG_MODE',
+            'OCIMP_IMG_BASEURL',
+            'OCIMP_IMG_BASEPATH',
+        ] as $key) {
+            Configuration::deleteByName($key);
+        }
         return parent::uninstall();
     }
 
