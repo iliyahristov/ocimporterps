@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+  <name>ocimporterps</name>
+  <displayName>OpenCart 3 → PrestaShop Importer</displayName>
+  <version>0.2.3</version>
+  <author>kaielectric.com</author>
+  <tab>migration_tools</tab>
+  <confirmUninstall>Yes</confirmUninstall>
+  <description>Импорт на категории, продукти (с изображения), клиенти и поръчки от OpenCart 3.0.3.3</description>
+  <is_configurable>1</is_configurable>
+  <need_instance>0</need_instance>
+  <ps_versions_compliancy>
+    <min>8.0.0</min>
+    <max>9.99.99</max>
+  </ps_versions_compliancy>
+</module>

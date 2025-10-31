@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS `PREFIX_ocimp_map`;
+DROP TABLE IF EXISTS `PREFIX_ocimp_job_item`;
+DROP TABLE IF EXISTS `PREFIX_ocimp_job`;

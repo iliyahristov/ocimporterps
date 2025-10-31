@@ -1,0 +1,8 @@
+{
+  "name": "kaielectric/ocimporterps",
+  "description": "OpenCart 3 -> PrestaShop 8/9 importer",
+  "type": "prestashop-module",
+  "license": "MIT",
+  "authors": [{"name": "kaielectric.com"}],
+  "require": {}
+}
