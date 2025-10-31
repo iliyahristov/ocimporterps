@@ -7,7 +7,7 @@ class Ocimporterps extends Module
     {
         $this->name = 'ocimporterps';
         $this->tab = 'migration_tools';
-        $this->version = '0.3.0';
+        $this->version = '0.3.2';
         $this->author = 'kaielectric.com';
         $this->need_instance = 0;
         $this->bootstrap = true;
@@ -53,6 +53,25 @@ class Ocimporterps extends Module
             Configuration::deleteByName($key);
         }
         return parent::uninstall();
+    }
+
+    public function getContent()
+    {
+        if (Tools::getValue('controller') === 'AdminOcimporter') {
+            return '';
+        }
+
+        $params = [
+            'configure' => $this->name,
+            'module_name' => $this->name,
+            'module' => $this->name,
+        ];
+
+        $query = http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+        $token = Tools::getAdminTokenLite('AdminOcimporter');
+        Tools::redirectAdmin('index.php?controller=AdminOcimporter&'.$query.'&token='.$token);
+
+        return '';
     }
 
     protected function installSql()

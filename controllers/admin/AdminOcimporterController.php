@@ -1,4 +1,7 @@
 <?php
+require_once _PS_MODULE_DIR_.'ocimporterps/services/OpenCartConnection.php';
+require_once _PS_MODULE_DIR_.'ocimporterps/services/Mappers.php';
+require_once _PS_MODULE_DIR_.'ocimporterps/services/ImportRunner.php';
 class AdminOcimporterController extends ModuleAdminController
 {
     public function __construct()
